@@ -129,7 +129,7 @@ createOrReplace
 
 O resultado do modelo deve ficar assim:
 
-![Relacionamento](assets\relacionamento.png)
+![Relacionamento](.\assets\relacionamento.png)
 
 
 ## Medidas  
@@ -183,7 +183,7 @@ Se preferir pode efetuar efetuar o download da pasta [PBIP]() e abrir em seu Pow
 
 Monte um visual de tabela adicione as dimensões que desejar e coloque as duas medidas criadas para analisar o deslocamento para os dias úteis.  
 
-![Tabela](assets\tabela.png) 
+![Tabela](.\assets\tabela.png) 
 
 
 
