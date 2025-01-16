@@ -1,0 +1,55 @@
+table ponte_dias_uteis
+	lineageTag: fc831a7b-3dd0-496e-8e9b-f4aa2e6cf349
+
+	column Data
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: ed2c91b0-5ab4-4f54-8f31-4a39bf0ce02a
+		summarizeBy: none
+		sourceColumn: Data
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DataUtil
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: c0164f29-98e4-4aa8-b6ec-717c80bfed7a
+		summarizeBy: none
+		sourceColumn: DataUtil
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition ponte_dias_uteis = m
+		mode: import
+		source = ```
+				let
+				    // Referência da dim_calendario selecionando apenas as colunas necessárias
+				    Fonte = dim_calendario[[Data], [DiaUtilNumero]],
+				    
+				    // Gera uma Tabela com datas úteis
+				    DatasUteis = Table.RenameColumns(    // Renomeia
+				        Table.SelectRows(                    // Seleciona as linhas  
+				            Table.Buffer(Fonte),             // Na tabela bufferizada da etapa Fonte
+				            each [DiaUtilNumero] = 1         // Onde cada linha for dia útil
+				            )[[Data]],                       // Traz somente a coluna Data
+				        {{"Data", "DataUtil"}}           // De data para DataUtil
+				    ),
+				    
+				    // Faz o Join de todas as datas com as datas úteis
+				    Join = Table.Join(
+				        Fonte[[Data]], {"Data"},    // Tabela da esquerda com todas as datas
+				        DatasUteis, {"DataUtil"},   // Tabela da direita apenas com datas úteis
+				        JoinKind.LeftOuter,         // Tipo da junção. Todas as linhas da esquerda e nulo para não encontradas
+				        JoinAlgorithm.RightHash     // Algoritmo armazenando as datas úteis para melhor performance
+				    ),
+				    
+				    // Traz a próxima data útil para as linhas nulas
+				    PreenchidoAcima = Table.FillUp(Join,{"DataUtil"})
+				in
+				    PreenchidoAcima
+				```
+

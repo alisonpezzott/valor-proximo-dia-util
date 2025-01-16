@@ -1,0 +1,13 @@
+relationship 8b3a54bf-8c91-4444-31e4-3e67b9458a35
+	fromColumn: fact_vencimentos.DataVencimento
+	toColumn: dim_calendario.Data
+
+relationship dim_calendario-ponte_dias_uteis
+	fromColumn: ponte_dias_uteis.DataUtil
+	toColumn: dim_calendario.Data
+
+relationship ponte_dias_uteis-fact_vencimentos
+	isActive: false
+	fromColumn: fact_vencimentos.DataVencimento
+	toColumn: ponte_dias_uteis.Data
+

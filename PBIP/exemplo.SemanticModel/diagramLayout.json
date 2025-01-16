@@ -1,0 +1,62 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "dim_calendario",
+          "nodeLineageTag": "100ab98e-c99d-450b-8d03-d8b16a8e9b15",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0,
+          "expandedHeight": 300
+        },
+        {
+          "location": {
+            "x": 196,
+            "y": 430
+          },
+          "nodeIndex": "fact_vencimentos",
+          "nodeLineageTag": "d5136436-11c5-4ebd-97fe-346275a9451a",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 443,
+            "y": 152
+          },
+          "nodeIndex": "ponte_dias_uteis",
+          "nodeLineageTag": "fc831a7b-3dd0-496e-8e9b-f4aa2e6cf349",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas as tabelas",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas as tabelas",
+  "defaultDiagram": "Todas as tabelas"
+}

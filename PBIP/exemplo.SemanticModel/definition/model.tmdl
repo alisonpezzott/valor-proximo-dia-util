@@ -1,0 +1,28 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBIDesktopVersion = 2.139.1678.0 (24.12)+2a034ab280bddf891eb7bb9ebfe6996f9c3a3196
+
+annotation PBI_QueryOrder = ["dim_calendario","fact_vencimentos","ponte_dias_uteis"]
+
+annotation __TEdtr = 1
+
+annotation PBI_ProTooling = ["TMDLView_Desktop","DevMode"]
+
+annotation PBI_NavigationStepName = Navegação
+
+annotation PBI_ResultType = Table
+
+ref table dim_calendario
+ref table fact_vencimentos
+ref table ponte_dias_uteis
+
+ref cultureInfo pt-BR
+

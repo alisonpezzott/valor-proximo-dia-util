@@ -1,0 +1,19 @@
+createOrReplace
+
+	ref table fact_vencimentos
+
+		measure 'Vencimentos na data' = SUM('fact_vencimentos'[Valor])
+			formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+
+			annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+		measure 'Vencimentos na data útil' = ```
+				CALCULATE(
+					SUM('fact_vencimentos'[Valor]),
+					USERELATIONSHIP('ponte_dias_uteis'[Data], 'fact_vencimentos'[DataVencimento])
+				)
+			
+		```
+			formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+
+			annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
